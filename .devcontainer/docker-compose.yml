@@ -1,0 +1,14 @@
+version: "3"
+services:
+  slack-emoji-monitor:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        WORKDIR: /project
+    volumes:
+      - ..:/project
+    image: slack-emoji-monitor-image
+    container_name: slack-emoji-monitor
+    tty: true
+    env_file: ../.env
