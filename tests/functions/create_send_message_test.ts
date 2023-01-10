@@ -9,12 +9,10 @@ Deno.test("Normal Case", async () => {
   const inputs = {
     name: "name_1",
     subtype: "add",
-    message_ts: "",
   };
   const { outputs } = await create_send_message(createContext({ inputs }));
   const actual = outputs?.send_message;
   const expected = `絵文字が追加されました
-
 :name_1:`;
   assertEquals(actual, expected);
 });

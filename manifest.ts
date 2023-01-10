@@ -7,5 +7,5 @@ export default Manifest({
   icon: "assets/default_new_app_icon.png",
   workflows: [NotifyWorkflow],
   outgoingDomains: [],
-  botScopes: ["commands", "channels:read", "chat:write", "chat:write.public", "emoji:read"],
+  botScopes: ["chat:write", "chat:write.public", "emoji:read"],
 });
