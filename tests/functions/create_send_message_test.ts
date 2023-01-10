@@ -7,17 +7,14 @@ import create_send_message from "../../functions/create_send_message.ts";
 
 Deno.test("Normal Case", async () => {
   const inputs = {
-    user_id: "user_id_1",
-    channel_id: "channel_id_1",
-    event_type: "channel_created",
-    channel_type: "channel_type",
+    name: "name_1",
+    subtype: "add",
+    message_ts: "",
   };
   const { outputs } = await create_send_message(createContext({ inputs }));
   const actual = outputs?.send_message;
-  const expected = `新しいチャンネルが作成されました :clap:
+  const expected = `絵文字が追加されました
 
-チャンネル名: <#channel_id_1>
-チャンネル種別: channel_type
-実施者: <@user_id_1>`;
+:name_1:`;
   assertEquals(actual, expected);
 });

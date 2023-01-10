@@ -7,13 +7,12 @@ const _SUBTYPE_MESSAGES: Map<string, string> = new Map([
 
 const createMessage = (
   subtype: string,
-  names: Array<string>,
+  name: string,
   // message_ts: string,
 ): string => {
-  const emoji = names.map((x) => `:${x}:`).join(" ");
-  const base_message = [emoji].join("\n");
+  const emoji = `:${name}:`;
   const top_message = _SUBTYPE_MESSAGES.get(subtype);
-  return `${top_message}\n\n${base_message}`;
+  return `${top_message}\n\n${emoji}`;
 };
 
 export const CreateSendMessageFunction = DefineFunction({
@@ -27,16 +26,16 @@ export const CreateSendMessageFunction = DefineFunction({
         type: Schema.types.string,
         description: "Subtype",
       },
-      names: {
-        type: Schema.types.array,
-        description: "Names",
+      name: {
+        type: Schema.types.string,
+        description: "Name",
       },
       message_ts: {
         type: Schema.types.string,
         description: "Message ts",
       },
     },
-    required: ["subtype", "names", "message_ts"],
+    required: ["subtype", "name", "message_ts"],
   },
   output_parameters: {
     properties: {
@@ -54,7 +53,7 @@ export default SlackFunction(
   ({ inputs }) => {
     const send_message = createMessage(
       inputs.subtype,
-      inputs.names,
+      inputs.name,
       // inputs.message_ts,
     );
     return { outputs: { send_message } };

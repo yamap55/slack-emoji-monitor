@@ -9,12 +9,12 @@ const NotifyWorkflow = DefineWorkflow({
   input_parameters: {
     properties: {
       subtype: { type: Schema.slack.types.channel_id },
-      names: { type: Schema.types.array },
+      name: { type: Schema.types.string },
       message_ts: { type: Schema.types.string },
     },
     required: [
       "subtype",
-      "names",
+      "name",
       "message_ts",
     ],
   },
@@ -23,7 +23,7 @@ const message = NotifyWorkflow.addStep(
   CreateSendMessageFunction,
   {
     subtype: NotifyWorkflow.inputs.subtype,
-    names: NotifyWorkflow.inputs.names,
+    name: NotifyWorkflow.inputs.name,
     message_ts: NotifyWorkflow.inputs.message_ts,
   },
 );

@@ -8,7 +8,7 @@ const trigger: Trigger<typeof NotifyWorkflow.definition> = {
   event: { event_type: "slack#/events/emoji_changed" },
   inputs: {
     subtype: { value: "{{data.subtype}}" },
-    names: { value: "{{data.names}}" },
+    name: { value: "{{data.name}}" },
     message_ts: { value: "{{data.message_ts}}" },
   },
 };
