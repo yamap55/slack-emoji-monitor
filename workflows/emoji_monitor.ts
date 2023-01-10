@@ -1,6 +1,5 @@
 import { DefineWorkflow, Schema } from "deno-slack-sdk/mod.ts";
 import { CreateSendMessageFunction } from "../functions/create_send_message.ts";
-
 import { GetNotifyChannelFunction } from "../functions/get_notify_channel.ts";
 
 const NotifyWorkflow = DefineWorkflow({
@@ -8,7 +7,7 @@ const NotifyWorkflow = DefineWorkflow({
   title: "Emoji Monitor Workflow",
   input_parameters: {
     properties: {
-      subtype: { type: Schema.slack.types.channel_id },
+      subtype: { type: Schema.types.string },
       name: { type: Schema.types.string },
     },
     required: ["subtype", "name"],
